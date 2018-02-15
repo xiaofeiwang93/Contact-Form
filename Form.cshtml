@@ -1,0 +1,55 @@
+@using YourNameSpace.Controllers
+@model YourNameSpace.Models.ContactFormModel
+@using Recaptcha.Web.Mvc
+
+@{
+    //Html.BeginUmbracoForm<Corresponding Controller Name>("Corresponding Action Name", Http request method, new { @class="form" })
+    using (Html.BeginUmbracoForm<ContactFormController>("SubmitContactForm", FormMethod.Post, new { @class="form" }))
+    {
+        @Html.ValidationSummary(true) //If the bool parameter is true then only model-level errors are displayed. If the parameter is false then all errors are shown.
+        @Html.AntiForgeryToken() //Protect your application against cross-site request forgery.
+
+        <div class="row">
+            <div class="col col-xs-12 col-sm-6">
+                <div class="form--row">
+                    //Insert contact field here
+                    <label for="FirstName" class="s-invisible">First Name</label>
+                    @Html.TextBoxFor(model => model.FirstName, new { placeholder = "First Name*", required="required"  })
+                    @Html.ValidationMessageFor(model => model.FirstName)
+                </div>
+            </div>
+            <div class="col col-xs-12 col-sm-6">
+                <div class="form--row">
+                    <label for="LastName" class="s-invisible">Last Name</label>
+                    @Html.TextBoxFor(model => model.LastName, new { placeholder = "Last Name"})
+                    @Html.ValidationMessageFor(model => model.LastName)
+                </div>
+            </div>
+            <div class="col col-xs-12 col-sm-12">
+                <div class="form--row">
+                    <label for="Email" class="s-invisible">Email</label>
+                    @Html.TextBoxFor(model => model.Email, new { placeholder = "Email Address*", required="required"})
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+            </div>
+            <div class="col col-xs-12 col-sm-12">
+                <div class="form--row">
+                    <label for="Message" class="s-invisible">Message</label>
+                    @Html.TextAreaFor(model => model.Message, new { placeholder = "Message*", required="required"})
+                    @Html.ValidationMessageFor(model => model.Message)
+                </div>
+            </div>
+            <div class="col col-xs-12 col-sm-12">
+                <div class="form--row">
+                    //Where you want to show Google reCAPTCHA
+                    <div class="g-recaptcha" data-sitekey="6LfTZkIUAAAAAFJhgq2IDbbhTjz7XXay4cJNWx8z"></div>
+                </div>
+            </div>
+            
+            @Html.ValidationMessage("reCAPTCHA") //Validate Google reCAPTCHA
+            <div class="col col-xs-12 col-sm-12">
+                <button type="submit" class="btn">Submit</button>
+            </div>
+        </div>
+    }
+}
