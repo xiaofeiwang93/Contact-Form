@@ -8,7 +8,9 @@ like this:
       </smtp>
     </mailSettings>
   </system.net>
-  
+ 
+ - For Google reCAPTCHA, need to install RecaptchaNet (by tanveery) from the NuGet Package Manager. 
+ 
  - Also need to set up public key, private key and api version in appSettings
  like this:
  <appSettings>
