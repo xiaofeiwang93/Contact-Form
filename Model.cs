@@ -5,19 +5,19 @@ namespace YourNameSpace.Models
 
     public class ContactFormModel
     {
-        [Required]
+        [Required(ErrorMessage = "Please provide your first name")]
         [DisplayName("First Name")]
         public string FirstName { get; set; }
 
         [DisplayName("Last Name")]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please provide your email")]
         [DisplayName("Email")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please write a message")]
         [DisplayName("Message")]
         public string Message { get; set; }
     }
