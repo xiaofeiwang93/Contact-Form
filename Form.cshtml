@@ -39,6 +39,13 @@
                     @Html.ValidationMessageFor(model => model.Message)
                 </div>
             </div>
+            /* If it's an USkinned Umbraco site
+                <fieldset>
+                    <div class="g-recaptcha" data-sitekey="6LdBXVEUAAAAAHKkFGsZ1745Zg05R2QBAcwayCI1"></div>
+                    <div class="alert alert-danger alert-dismissible fade in" id="recaptchaErrorMsg" style="display:none"></div>
+                    <div class="alert alert-danger alert-dismissible fade in" id="recaptchaFailMsg" style="display:none"></div>
+                </fieldset>
+            */
             <div class="col col-xs-12 col-sm-12">
                 <div class="form--row">
                     //Where you want to show Google reCAPTCHA

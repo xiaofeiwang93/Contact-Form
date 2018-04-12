@@ -34,6 +34,9 @@ namespace YourNameSpace.Controllers
             {
                 ModelState.AddModelError("reCAPTCHA", "Please complete the reCAPTCHA");
                 return CurrentUmbracoPage();
+                /* If it's an USkinned Umbraco Site:
+                    return JavaScript("$('#recaptchaErrorMsg').show();$('#recaptchaErrorMsg').html('The reCAPTCHA field is required.');");
+                */
             }
             else
             {
@@ -43,6 +46,9 @@ namespace YourNameSpace.Controllers
                 {
                     ModelState.AddModelError("reCAPTCHA", "The reCAPTCHA is incorrect!");
                     return CurrentUmbracoPage();
+                    /* If it's an USkinned Umbraco Site:
+                        return JavaScript("$('#recaptchaFailMsg').show();$('#recaptcahFailMsg').html('The reCAPTCHA is incorrect!');");
+                    */
                 }
             }
 
@@ -50,6 +56,9 @@ namespace YourNameSpace.Controllers
             if (!ModelState.IsValid)
             {
                 return CurrentUmbracoPage();
+                /* If it's an USkinned Umbraco Site:
+                    return JavaScript(String.Format("$(ContactError{0}).show();$(ContactError{0}).html('{1}');", model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(umbraco.library.GetDictionaryItem("USN Contact Form General Error"))));
+                */
             }
 
             string managerEmail = CurrentPage.HasValue("notifyEmail") ? CurrentPage.GetPropertyValue<string>("notifyEmail") : string.Empty;
